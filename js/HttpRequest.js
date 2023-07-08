@@ -1,9 +1,10 @@
+//HTTP request
 (() => {
     const xhr = new XMLHttpRequest(), // Instanciamos el HttpRequest
         $xhr = document.querySelector('#xhr'), // Obtenemos la lista no ordenada con el id "ol"
         $fragment = document.createDocumentFragment(); // Creamos un fragment para solo se haga una iteracion por elemento.
     //
-    xhr.addEventListener('readystatechange',(e) => {
+    xhr.addEventListener('readystatechange',(e) => { // Eventos
         if (xhr.readyState !== 4) return; // Retornamos una vez que el state sea =4 esto indica que el consumo fue exitoso
         console.log(xhr); // Mostramos en la consola
 
@@ -18,7 +19,7 @@
                 //Fragment agrupar elementos sin introducir elementos extra a nivel de DOM. En este sentido, es un componente hueco que no te romperá estilos ni semántica.
                 $fragment.appendChild($li);
             });
-            $xhr.appendChild($fragment);
+            $xhr.appendChild($fragment); // Mostramos al DOM
         }else {
             // Este else nos servira para identificar los errores con el estatus
             /*
@@ -36,7 +37,8 @@
         console.log("Este mensaje cargara de cualquier forma");
     });
 
-    xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
-    xhr.send();
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/users'); // Abrimos la api
+    xhr.send(); // La enviamos
 
 })();
+
