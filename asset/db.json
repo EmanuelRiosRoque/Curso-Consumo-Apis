@@ -1,0 +1,66 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Emanuel",
+      "apelliodo": "Rios Roque"
+    },
+    {
+      "id": 2,
+      "nombre": "Maria",
+      "apelliodo": "Rios Roque"
+    },
+    {
+      "id": 3,
+      "nombre": "Cristina",
+      "apelliodo": "Rios Roque"
+    },
+    {
+      "id": 4,
+      "nombre": "Ines",
+      "apelliodo": "Rios Roque"
+    },
+    {
+      "id": 5,
+      "nombre": "Delfino",
+      "apelliodo": "Rios Roque"
+    },
+    {
+      "nombre": "Nina",
+      "apelliodo": "Rios Roque",
+      "id": 7
+    },
+    {
+      "nombre": "Nina",
+      "apelliodo": "Rios Roque",
+      "id": 10
+    }
+  ],
+  "datos": [
+    {
+      "id": 1,
+      "correo": "emanuel@correo.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "correo": "maria@correo.com",
+      "password": "12345678"
+    },
+    {
+      "id": 3,
+      "correo": "cristina@correo.com",
+      "password": "12345678"
+    },
+    {
+      "id": 4,
+      "correo": "ines@correo.com",
+      "password": "12345678"
+    },
+    {
+      "id": 5,
+      "correo": "delfino@correo.com",
+      "password": "12345678"
+    }
+  ]
+}

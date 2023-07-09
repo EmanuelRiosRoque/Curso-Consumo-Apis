@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD API REST AJAX</title>
+</head>
+
+<body>
+    <h1>CRUD API REST AJAX</h1>
+    <section id="crud">
+        <article>
+            <h2 class="crud-title">Agregar Usuarios</h2>
+            <form class="crud-form" action="">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required> <br>
+                <input type="text" id="apelliodo" name="apelliodo" placeholder="apellido" required> <br>
+                <input type="submit" value="Enviar">
+                <input type="hidden" name="id">
+            </form>
+        </article>
+        <article>
+            <h2>Ver Usuarios</h2>
+            <table class="crud-table">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                </thead>
+
+                <tbody></tbody>
+            </table>
+
+        </article>
+    </section>
+
+
+    <template id="crud-template">
+        <tr>
+            <td class="name"></td>
+            <td class="apellido"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+
+
+    <script src="/js/crudHTTP.js"></script>
+</body>
+
+</html>
