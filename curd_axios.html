@@ -14,7 +14,7 @@
             <h2 class="crud-title">Agregar Usuarios</h2>
             <form class="crud-form" action="">
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre" required> <br>
-                <input type="text" id="apellido" name="apellido" placeholder="Nombre" required> <br>
+                <input type="text" id="apellido" name="apellido" placeholder="apellido" required> <br>
                 <input type="submit" value="Enviar">
                 <input type="hidden" name="id">
             </form>
@@ -33,18 +33,19 @@
         </article>
     </section>
 
-
     <template id="crud-template">
-        <td class="name"></td>
-        <td class="apellido"></td>
-        <td>
-            <button class="edit">Editar</button>
-            <button class="delete">Eliminar</button>
-        </td>
+        <tr>
+            <td class="name"></td>
+            <td class="apellido"></td>
+            <td>
+                <button class="edit">Editar</button>
+                <button class="delete">Eliminar</button>
+            </td>
+        </tr>
     </template>
 
-
-    <!-- <script src="/js/crud.js"></script> -->
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="/js/crudAxios.js"></script>
 </body>
 
 </html>

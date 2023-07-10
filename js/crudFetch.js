@@ -15,7 +15,7 @@ const getAll = async () => {
     console.log(json);
 
     json.forEach((element) => {
-      $template.querySelector(".name").textContent = element.nombre,
+      $template.querySelector(".name").textContent = element.nombre;
       $template.querySelector(".apellido").textContent = element.apelliodo;
       $template.querySelector(".edit").dataset.id = element.id;
       $template.querySelector(".edit").dataset.name = element.nombre;
@@ -44,82 +44,94 @@ d.addEventListener("submit", async (e) => {
       // Create POST request
       try {
         let opt = {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json; charset=utf-8",
+            method: "POST",
+            headers: {
+              "Content-type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+              nombre: e.target.nombre.value,
+              apelliodo: e.target.apellido.value,
+            }),
           },
-          body: JSON.stringify({
-            nombre: e.target.nombre.value,
-            apelliodo: e.target.apellido.value,
-          })
-        },
-        res = await fetch("http://localhost:3000/usuarios", opt),
-        json = await res.json();
+          res = await fetch("http://localhost:3000/usuarios", opt),
+          json = await res.json();
         location.reload();
 
         if (!res.ok) throw { status: res.status, statusText: res.statusText };
       } catch (err) {
         let msj = err.statusText || `Ocurrio un error`;
-        $form.insertAdjacentHTML("afterend", `<p><b>${err.status}:${msj}</b></p>`);
+        $form.insertAdjacentHTML(
+          "afterend",
+          `<p><b>${err.status}:${msj}</b></p>`
+        );
       }
     } else {
       // Update PUT request
       try {
         let opt = {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json; charset=utf-8",
+            method: "PUT",
+            headers: {
+              "Content-type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+              nombre: e.target.nombre.value,
+              apelliodo: e.target.apellido.value,
+            }),
           },
-          body: JSON.stringify({
-            nombre: e.target.nombre.value,
-            apelliodo: e.target.apellido.value,
-          })
-        },
-        res = await fetch(`http://localhost:3000/usuarios/${e.target.id.value}`, opt),
-        json = await res.json();
+          res = await fetch(
+            `http://localhost:3000/usuarios/${e.target.id.value}`,
+            opt
+          ),
+          json = await res.json();
         location.reload();
-
 
         if (!res.ok) throw { status: res.status, statusText: res.statusText };
       } catch (err) {
         let msj = err.statusText || `Ocurrio un error`;
-        $form.insertAdjacentHTML("afterend", `<p><b>${err.status}:${msj}</b></p>`);
+        $form.insertAdjacentHTML(
+          "afterend",
+          `<p><b>${err.status}:${msj}</b></p>`
+        );
       }
     }
   }
 });
 
-d.addEventListener("click",async e => {
-    if (e.target.matches(".edit")) {
-        $title.textContent = 'Editar Usuario';
-        $form.nombre.value = e.target.dataset.name;
-        $form.apellido.value = e.target.dataset.apellido;
-        $form.id.value = e.target.dataset.id;
-    }
+d.addEventListener("click", async (e) => {
+  if (e.target.matches(".edit")) {
+    $title.textContent = "Editar Usuario";
+    $form.nombre.value = e.target.dataset.name;
+    $form.apellido.value = e.target.dataset.apellido;
+    $form.id.value = e.target.dataset.id;
+  }
 
+  if (e.target.matches(".delete")) {
+    let name = e.target.dataset.name;
+    let apelliodo = e.target.dataset.apellido;
+    let isDelete = confirm(
+      `¿Estas seguro de eliminar el usuario: ${name} ${apelliodo} ?`
+    );
+    if (isDelete) {
+      try {
+        let opt = {
+            method: "DELETE",
+            headers: {
+              "Content-type": "application/json; charset=utf-8",
+            },
+          },
+          res = await fetch(
+            `http://localhost:3000/usuarios/${e.target.dataset.id}`,
+            opt
+          ),
+          json = await res.json();
+        location.reload();
 
-    if (e.target.matches('.delete')) {
-        let name = e.target.dataset.name;
-        let apelliodo = e.target.dataset.apellido;
-        let isDelete = confirm(`¿Estas seguro de eliminar el usuario: ${name} ${apelliodo} ?`);
-        if (isDelete) {
-            try {
-                let opt = {
-                  method: "DELETE",
-                  headers: {
-                    "Content-type": "application/json; charset=utf-8",
-                  }
-                },
-                res = await fetch(`http://localhost:3000/usuarios/${e.target.dataset.id}`, opt),
-                json = await res.json();
-                location.reload();
-        
-        
-                if (!res.ok) throw { status: res.status, statusText: res.statusText };
-              } catch (err) {
-                let msj = err.statusText || `Ocurrio un error`;
-                alert(`Error ${err.status}:${msj}`);
-            }
-        }
+        if (!res.ok) throw { status: res.status, statusText: res.statusText };
+      } catch (err) {
+        let msj = err.statusText || `Ocurrio un error`;
+        alert(`Error ${err.status}:${msj}`);
+      }
+      ls;
     }
+  }
 });
